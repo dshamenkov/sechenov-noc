@@ -1,0 +1,1423 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Статьи и публикации — НОЦ «ИСТвМ»</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #21108E;
+            --primary-light: #323FA6;
+            --primary-dark: #180B6B;
+            --accent: #4F5BD5;
+            --accent-light: #8B93E8;
+            --science-orange: #FF8831;
+            --success-green: #5CDB95;
+            --success-teal: #38B2AC;
+            --bg-light: #F5F6FA;
+            --bg-white: #FFFFFF;
+            --text-primary: #1A1A2E;
+            --text-secondary: #4A4A6A;
+            --text-muted: #8888A0;
+            --border: #E2E4ED;
+            --gradient-hero: linear-gradient(135deg, #21108E 0%, #323FA6 50%, #4F5BD5 100%);
+            --gradient-teal: linear-gradient(135deg, #38B2AC 0%, #20B2AA 100%);
+            --shadow-sm: 0 2px 8px rgba(33, 16, 142, 0.06);
+            --shadow-md: 0 4px 20px rgba(33, 16, 142, 0.1);
+            --shadow-lg: 0 8px 40px rgba(33, 16, 142, 0.12);
+            --radius: 16px;
+            --radius-sm: 8px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-primary);
+            background: var(--bg-white);
+            line-height: 1.7;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* === HEADER === */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            box-shadow: var(--shadow-sm);
+        }
+
+        .header-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .back-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .back-link:hover {
+            background: var(--bg-light);
+            color: var(--primary);
+        }
+
+        .back-link svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            text-decoration: none;
+            color: var(--primary);
+        }
+
+        .logo-mark {
+            width: 44px;
+            height: 44px;
+            background: var(--gradient-hero);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 800;
+            font-size: 22px;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .logo-text-top {
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--primary);
+            letter-spacing: -0.3px;
+        }
+
+        .logo-text-bottom {
+            font-weight: 400;
+            font-size: 11px;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* === HERO === */
+        .hero {
+            padding: 160px 40px 80px;
+            background: var(--gradient-hero);
+            position: relative;
+            overflow: hidden;
+            margin-top: 72px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(79,91,213,0.3) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-header {
+            display: flex;
+            align-items: flex-end;
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            color: white;
+            line-height: 1.15;
+            letter-spacing: -1px;
+            flex: 1;
+        }
+
+        .article-count {
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 100px;
+            padding: 8px 20px;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+            white-space: nowrap;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: rgba(255,255,255,0.8);
+            max-width: 650px;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        /* === SECTION === */
+        .section {
+            padding: 80px 40px;
+        }
+
+        .section-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        /* === FEATURED ARTICLE === */
+        .featured-article {
+            background: var(--bg-light);
+            margin-bottom: 0;
+            padding-top: 0;
+        }
+
+        .featured-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 16px;
+            background: rgba(92, 219, 149, 0.15);
+            border-radius: 100px;
+            color: var(--success-green);
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+        }
+
+        .featured-badge-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--success-green);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .featured-card {
+            background: white;
+            border: 2px solid var(--success-teal);
+            border-radius: var(--radius);
+            padding: 48px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 12px 48px rgba(56, 178, 172, 0.08);
+        }
+
+        .featured-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(56, 178, 172, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .featured-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .featured-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .featured-conference {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px;
+            background: rgba(56, 178, 172, 0.1);
+            border-radius: 100px;
+            color: var(--success-teal);
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .featured-year {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 12px;
+            background: rgba(33, 16, 142, 0.06);
+            border-radius: 100px;
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .featured-card h2 {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+
+        .featured-authors {
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            font-weight: 500;
+        }
+
+        .featured-authors strong {
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .featured-abstract {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+
+        .featured-toggle {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--gradient-teal);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .featured-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(56, 178, 172, 0.25);
+        }
+
+        .featured-fulltext {
+            margin-top: 28px;
+            padding-top: 28px;
+            border-top: 1px solid var(--border);
+            display: none;
+        }
+
+        .featured-fulltext.expanded {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .featured-section-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 16px;
+            margin-bottom: 12px;
+        }
+
+        .featured-section-content {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .featured-keywords {
+            margin-top: 16px;
+        }
+
+        .featured-keywords-label {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .featured-keywords-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .keyword-tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 12px;
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            transition: all 0.2s;
+        }
+
+        .keyword-tag:hover {
+            background: rgba(56, 178, 172, 0.1);
+            border-color: var(--success-teal);
+            color: var(--success-teal);
+        }
+
+        /* === ARTICLES GRID === */
+        .articles-intro {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 48px;
+        }
+
+        .articles-intro h2 {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin: 0;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+
+        .article-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 36px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .article-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: transparent;
+        }
+
+        .article-header {
+            margin-bottom: 24px;
+        }
+
+        .article-year {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 12px;
+            background: rgba(33, 16, 142, 0.06);
+            border-radius: 100px;
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .article-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .article-authors {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .article-date {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        .article-abstract {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 24px;
+            flex-grow: 1;
+        }
+
+        .article-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        .article-read-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            background: transparent;
+            border: none;
+            color: var(--primary);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .article-read-btn:hover {
+            gap: 10px;
+            color: var(--primary-light);
+        }
+
+        .article-read-btn.toggle-full {
+            background: transparent;
+        }
+
+        .article-fulltext {
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+            display: none;
+        }
+
+        .article-fulltext.expanded {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        .article-fulltext-content {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .article-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+            flex-wrap: wrap;
+        }
+
+        .article-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 6px 12px;
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .article-link:hover {
+            background: rgba(33, 16, 142, 0.06);
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* === FOOTER === */
+        .footer {
+            background: #0D0B2E;
+            color: rgba(255,255,255,0.7);
+            padding: 64px 40px 32px;
+        }
+
+        .footer-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+
+        .footer-brand h3 {
+            color: white;
+            font-size: 18px;
+            margin-bottom: 16px;
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: background 0.2s;
+        }
+
+        .footer-social a:hover {
+            background: rgba(255,255,255,0.15);
+        }
+
+        .footer-col h4 {
+            color: white;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-col a {
+            display: block;
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 14px;
+            margin-bottom: 12px;
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+        }
+
+        .footer-bottom a {
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 1024px) {
+            .hero h1 { font-size: 40px; }
+            .articles-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .header-inner { padding: 0 20px; }
+            .hero { padding: 120px 20px 60px; }
+            .hero h1 { font-size: 32px; }
+            .hero-subtitle { font-size: 16px; }
+            .hero-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+            .section { padding: 60px 20px; }
+            .featured-card { padding: 32px 20px; }
+            .article-card { padding: 24px 20px; }
+            .featured-card h2 { font-size: 24px; }
+            .article-card h3 { font-size: 18px; }
+            .footer-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-inner">
+            <div class="header-left">
+                <a href="index.html" class="back-link">
+                    <svg viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"/>
+                    </svg>
+                    На главную
+                </a>
+                <a href="index.html" class="logo-area">
+                    <div class="logo-mark">И</div>
+                    <div class="logo-text">
+                        <div class="logo-text-top">НОЦ «ИСТвМ»</div>
+                        <div class="logo-text-bottom">СЕЧЕНОВСКИЙ</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-header">
+                <h1>Статьи и публикации</h1>
+                <div class="article-count">10 статей</div>
+            </div>
+            <p class="hero-subtitle">
+                Научные исследования и публикации наших специалистов по темам информационных и социальных технологий в медицине
+            </p>
+        </div>
+    </section>
+
+    <!-- FEATURED ARTICLE -->
+    <section class="section featured-article">
+        <div class="section-inner">
+            <div class="featured-badge">
+                <span class="featured-badge-dot"></span>
+                Новое исследование
+            </div>
+
+            <div class="featured-card">
+                <div class="featured-content">
+                    <div class="featured-meta">
+                        <div class="featured-conference">🎓 CNES 2025</div>
+                        <div class="featured-year">2025</div>
+                    </div>
+
+                    <h2>Natural Language Processing for Scalable Mental Health Monitoring and Peer Support: Insights from the Open Dialogue Digital Platform</h2>
+
+                    <div class="featured-authors">
+                        <strong>Dmitry Shamenkov¹</strong>, Alexander Lebedev², Elen Pogosyan²
+                    </div>
+
+                    <div class="featured-authors" style="font-size: 13px; margin-top: -12px; margin-bottom: 20px;">
+                        ¹National School of Public Health, NOVA University Lisbon, Portugal<br>
+                        ²Opendialogue.space, Lisbon, Portugal
+                    </div>
+
+                    <p class="featured-abstract">
+                        <strong>Conference:</strong> 19th Portuguese Health Economics Conference (CNES), October 30-31, 2025, Faculdade de Economia, Universidade do Porto<br>
+                        <strong>Abstract #165</strong>
+                    </p>
+
+                    <p class="featured-abstract">
+                        The global burden of mental health disorders continues to rise, placing unprecedented demands on healthcare systems and underscoring the need for innovative, scalable approaches to early detection and ongoing support. Traditional assessment tools—such as questionnaires and interviews—are often episodic, rely on self-report, and lack ecological validity, failing to capture the dynamic, context-dependent nuances of daily emotional experience. Advances in artificial intelligence (AI), particularly natural language processing (NLP), offer an unobtrusive, real-time window into authentic language use that may bridge these gaps.
+                    </p>
+
+                    <button class="featured-toggle" onclick="toggleFeatured(this)">Читать полностью →</button>
+
+                    <div class="featured-fulltext">
+                        <div class="featured-section-title">Objectives</div>
+                        <div class="featured-section-content">
+                            Illustrate a use-case framework for applying NLP to continuous self-reflection texts within a digital mental health platform. Explore the feasibility of automated, language-based monitoring to detect emerging distress signals. Present initial observations on user engagement, alert generation, and peer-support dynamics. Outline next steps for deepening analytic scope, extending multilingual capabilities, and conducting longitudinal evaluation.
+                        </div>
+
+                        <div class="featured-section-title">Methods</div>
+                        <div class="featured-section-content">
+                            We describe the Open Dialogue Space—a user-driven digital environment for goal setting, regular emotional self-reflection, and structured peer-support groups. Anonymized entries undergo sentiment analysis, semantic mapping, and topic modeling, then are mapped to standardized scales (e.g., PHQ-9, GAD-7). A tiered monitoring protocol flags deviations from individual baselines and emergent themes (e.g., crisis language, self-harm ideation), issuing alerts to peer moderators with optional professional escalation. All procedures adhere to ethical standards on privacy and informed consent. Our report combines a live demonstration of core functionality with accompanying quantitative metrics and analytics.
+                        </div>
+
+                        <div class="featured-section-title">Results</div>
+                        <div class="featured-section-content">
+                            <strong>Linguistic-Clinical Alignment:</strong> Extracted language markers (e.g., sentiment shifts, coherence changes) align meaningfully with self-reported mood states. <strong>Signal Detection:</strong> The monitoring system reliably surfaces emergent risk themes, with alert patterns mirroring user-disclosed distress episodes. <strong>User Engagement:</strong> Pilot deployment indicates that in-platform prompts and peer discussions strengthen reflective practice and perceived social connectedness. <strong>Scalability Profile:</strong> Operational metrics reflect efficient, low-touch scalability suitable for large-scale deployment.
+                        </div>
+
+                        <div class="featured-section-title">Conclusions</div>
+                        <div class="featured-section-content">
+                            This use-case report confirms that integrating AI-driven NLP into digital mental health platforms enables scalable screening, timely peer-based intervention, and adaptive goal-setting. The platform's integration of refined linguistic markers, multilingual support, and longitudinal monitoring provides a robust foundation for enhancing clinical practice and informing health policy in data-driven mental health care.
+                        </div>
+
+                        <div class="featured-keywords">
+                            <div class="featured-keywords-label">Ключевые слова</div>
+                            <div class="featured-keywords-list">
+                                <div class="keyword-tag">natural language processing</div>
+                                <div class="keyword-tag">digital mental health</div>
+                                <div class="keyword-tag">semantic mapping</div>
+                                <div class="keyword-tag">Open Dialogue</div>
+                                <div class="keyword-tag">active monitoring</div>
+                                <div class="keyword-tag">peer support</div>
+                                <div class="keyword-tag">scalability</div>
+                            </div>
+                        </div>
+
+                        <div class="article-links" style="margin-top: 24px;">
+                            <a href="https://event.fourwaves.com/19cnes/pages" class="article-link" target="_blank">Подробнее на сайте конференции →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MEDIA & EXPERT PUBLICATIONS -->
+    <section class="section">
+        <div class="section-inner">
+            <div class="articles-intro">
+                <h2>СМИ и экспертные публикации</h2>
+            </div>
+
+            <div class="articles-grid">
+                <!-- Forbes 1 -->
+                <article class="article-card">
+                    <div class="article-header">
+                        <div class="article-year">Forbes</div>
+                        <h3>Эпидемия одиночества: что укорачивает жизнь сильнее болезней, фастфуда и алкоголя</h3>
+                    </div>
+                    <div class="article-authors">Шаменков Д.А.</div>
+                    <div class="article-date">Forbes.ru — Ontology</div>
+                    <p class="article-abstract">
+                        Почему тренировка борьбы с одиночеством нужнее для здоровья и долголетия, чем трезвость и триатлон. Авторская колонка о социальных связях как ключевом факторе здоровья.
+                    </p>
+                    <div class="article-actions">
+                        <div class="article-links">
+                            <a href="https://www.forbes.ru/ontology/383273-epidemiya-odinochestva-chto-ukorachivaet-zhizn-silnee-bolezney-fastfuda-i-alkogolya" class="article-link" target="_blank">Читать на Forbes →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Forbes 2 -->
+                <article class="article-card">
+                    <div class="article-header">
+                        <div class="article-year">Forbes</div>
+                        <h3>Яд лжи и одиночества: как мы сами обрекаем себя на неудачи в бизнесе и в жизни</h3>
+                    </div>
+                    <div class="article-authors">Шаменков Д.А.</div>
+                    <div class="article-date">Forbes.ru — Ontology</div>
+                    <p class="article-abstract">
+                        Авторская колонка о механизмах саморазрушения через ложь и изоляцию, и о том, как честность и открытый диалог становятся инструментами трансформации в бизнесе и личной жизни.
+                    </p>
+                    <div class="article-actions">
+                        <div class="article-links">
+                            <a href="https://www.forbes.ru/ontology/388197-yad-lzhi-i-odinochestva-kak-my-sami-obrekaem-sebya-na-neudachi-v-biznese-i-v-zhizni" class="article-link" target="_blank">Читать на Forbes →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Forbes 3 -->
+                <article class="article-card">
+                    <div class="article-header">
+                        <div class="article-year">Forbes</div>
+                        <h3>«Если я скажу, что устал, меня спишут»: почему мужчины умирают раньше женщин и не ходят к врачам</h3>
+                    </div>
+                    <div class="article-authors">Шаменков Д.А.</div>
+                    <div class="article-date">Forbes Life</div>
+                    <p class="article-abstract">
+                        О гендерных стереотипах в отношении здоровья, о том, почему мужчины избегают врачей и как это влияет на продолжительность жизни. Экспертный комментарий.
+                    </p>
+                    <div class="article-actions">
+                        <div class="article-links">
+                            <a href="https://www.forbes.ru/forbeslife/417027-esli-ya-skazhu-chto-ustal-menya-spishut-pochemu-muzhchiny-umirayut-ranshe" class="article-link" target="_blank">Читать на Forbes →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Forbes 4 -->
+                <article class="article-card">
+                    <div class="article-header">
+                        <div class="article-year">Forbes</div>
+                        <h3>В будущее возьмут не всех: что делать менеджеру, чтобы не сойти с дистанции</h3>
+                    </div>
+                    <div class="article-authors">Шаменков Д.А.</div>
+                    <div class="article-date">Forbes.ru — Ontology</div>
+                    <p class="article-abstract">
+                        О том, как достичь пика формы и сохранить ресурсность в условиях высокой конкуренции. Вечная жизнь для менеджера — стратегии долгосрочной эффективности.
+                    </p>
+                    <div class="article-actions">
+                        <div class="article-links">
+                            <a href="https://www.forbes.ru/ontology-photogallery/392233-vechnaya-zhizn-dlya-menedzhera-kak-dostich-pika-formy-stat-stranicey-v" class="article-link" target="_blank">Читать на Forbes →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Forbes Profile -->
+                <article class="article-card">
+                    <div class="article-header">
+                        <div class="article-year">Forbes</div>
+                        <h3>Профиль автора: Дмитрий Шаменков</h3>
+                    </div>
+                    <div class="article-authors">Шаменков Д.А.</div>
+                    <div class="article-date">Forbes.ru</div>
+                    <p class="article-abstract">
+                        Страница автора на Forbes.ru — все колонки и экспертные публикации Дмитрия Шаменкова.
+                    </p>
+                    <div class="article-actions">
+                        <div class="article-links">
+                            <a href="https://www.forbes.ru/profile/383271-dmitriy-shamenkov" class="article-link" target="_blank">Профиль на Forbes →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Skolkovo 1 -->
+                <article class="article-card">
+                    <div class="article-header">
+                        <div class="article-year">СКОЛКОВО</div>
+                        <h3>Как противостоять стрессу? Советы доктора Шаменкова</h3>
+                    </div>
+                    <div class="article-authors">Шаменков Д.А.</div>
+                    <div class="article-date">Школа управления СКОЛКОВО — Экспертные мнения</div>
+                    <p class="article-abstract">
+                        Эффективные техники управления стрессом от врача, учёного и создателя метода «Открытый диалог». Практические рекомендации на основе научных исследований.
+                    </p>
+                    <div class="article-actions">
+                        <div class="article-links">
+                            <a href="https://www.skolkovo.ru/expert-opinions/kak-protivostoyat-stressu-sovety-doktora-shamenkova/" class="article-link" target="_blank">Читать на СКОЛКОВО →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Skolkovo 2 -->
+                <article class="article-card">
+                    <div class="article-header">
+                        <div class="article-year">СКОЛКОВО</div>
+                        <h3>Лидерство как образ жизни: целостный подход в действии</h3>
+                    </div>
+                    <div class="article-authors">Шаменков Д.А.</div>
+                    <div class="article-date">Школа управления СКОЛКОВО — Экспертные мнения</div>
+                    <p class="article-abstract">
+                        Постоянные изменения и кризисы стали новой нормой. О том, как руководителю сохранять внутренний стержень, вдохновлять команду и выстраивать доверительные отношения.
+                    </p>
+                    <div class="article-actions">
+                        <div class="article-links">
+                            <a href="https://www.skolkovo.ru/expert-opinions/liderstvo-kak-obraz-zhizni-celostnyj-podhod-v-dejstvii/" class="article-link" target="_blank">Читать на СКОЛКОВО →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Skolkovo 3 -->
+                <article class="article-card">
+                    <div class="article-header">
+                        <div class="article-year">СКОЛКОВО</div>
+                        <h3>Антихрупкость. Как пережить «идеальный шторм»</h3>
+                    </div>
+                    <div class="article-authors">Шаменков Д.А.</div>
+                    <div class="article-date">Школа управления СКОЛКОВО — Онлайн-конференция, 2020</div>
+                    <p class="article-abstract">
+                        Выступление на конференции СКОЛКОВО об антихрупкости. Какие компетенции нужны, чтобы преодолеть «идеальный шторм» и жить в новой реальности.
+                    </p>
+                    <div class="article-actions">
+                        <div class="article-links">
+                            <a href="https://skolkovo.ru/anti-fragility/how_to_survive_the_perfect_storm/" class="article-link" target="_blank">Страница конференции →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Skolkovo 4 -->
+                <article class="article-card">
+                    <div class="article-header">
+                        <div class="article-year">СКОЛКОВО</div>
+                        <h3>Как сохранить эмоциональное здоровье в кризис</h3>
+                    </div>
+                    <div class="article-authors">Шаменков Д.А.</div>
+                    <div class="article-date">Школа управления СКОЛКОВО — Экспертные мнения</div>
+                    <p class="article-abstract">
+                        О потере коммуникации и изоляции как угрозе здоровью. Как то, что мы переживаем сейчас, повлияет на наше здоровье в будущем, и что делать, чтобы подготовиться.
+                    </p>
+                    <div class="article-actions">
+                        <div class="article-links">
+                            <a href="https://www.skolkovo.ru/expert-opinions/upravlenie-zdorovem-v-krizis-iz-konferencii-2/" class="article-link" target="_blank">Читать на СКОЛКОВО →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Skolkovo 5 -->
+                <article class="article-card">
+                    <div class="article-header">
+                        <div class="article-year">СКОЛКОВО</div>
+                        <h3>Как мы реагируем на потрясения и что помогает выйти из стресса</h3>
+                    </div>
+                    <div class="article-authors">Шаменков Д.А.</div>
+                    <div class="article-date">Школа управления СКОЛКОВО — Экспертные мнения, 2024</div>
+                    <p class="article-abstract">
+                        О реакции на стресс и потрясения. Как негативный стресс можно сознательно превратить в эустресс — активирующий собственные ресурсы и способствующий новым стратегиям поведения.
+                    </p>
+                    <div class="article-actions">
+                        <div class="article-links">
+                            <a href="https://www.skolkovo.ru/expert-opinions/kak-my-reagiruem-na-izmeneniya-i-vsegda-li-stress-eto-ploho/" class="article-link" target="_blank">Читать на СКОЛКОВО →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Skolkovo 6 -->
+                <article class="article-card">
+                    <div class="article-header">
+                        <div class="article-year">СКОЛКОВО</div>
+                        <h3>В гармонии с собой</h3>
+                    </div>
+                    <div class="article-authors">Шаменков Д.А.</div>
+                    <div class="article-date">Школа управления СКОЛКОВО — Заметки, 2023</div>
+                    <p class="article-abstract">
+                        О том, какие привычки минимизируют последствия стресса. Рекомендации врача и директора НОЦ «ИСТвМ» для жизни в гармонии с собой.
+                    </p>
+                    <div class="article-actions">
+                        <div class="article-links">
+                            <a href="https://www.skolkovo.ru/notes/v-garmonii-s-soboj-01012023/" class="article-link" target="_blank">Читать на СКОЛКОВО →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Skolkovo 7 -->
+                <article class="article-card">
+                    <div class="article-header">
+                        <div class="article-year">СКОЛКОВО</div>
+                        <h3>День основания СКОЛКОВО 2025. Новая устойчивость: стратегии развития</h3>
+                    </div>
+                    <div class="article-authors">Шаменков Д.А.</div>
+                    <div class="article-date">Школа управления СКОЛКОВО — Событие, 2025</div>
+                    <p class="article-abstract">
+                        Участие в качестве спикера на Дне основания СКОЛКОВО 2025. Практики по раскрытию потенциала, устойчивости к переменам и построению сильных команд.
+                    </p>
+                    <div class="article-actions">
+                        <div class="article-links">
+                            <a href="https://www.skolkovo.ru/events/den-osnovaniya-2025/" class="article-link" target="_blank">Страница события →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Skolkovo 8 -->
+                <article class="article-card">
+                    <div class="article-header">
+                        <div class="article-year">СКОЛКОВО</div>
+                        <h3>День основания СКОЛКОВО 2025. Трек «Человек»</h3>
+                    </div>
+                    <div class="article-authors">Шаменков Д.А.</div>
+                    <div class="article-date">Школа управления СКОЛКОВО — Событие, 2025</div>
+                    <p class="article-abstract">
+                        Целостность — это внимание к себе в настоящем моменте. Умение «чувствовать себя» является базой для здоровья и устойчивого лидерства.
+                    </p>
+                    <div class="article-actions">
+                        <div class="article-links">
+                            <a href="https://www.skolkovo.ru/card/den-osnovaniya-skolkovo-2025-trek-chelovek/" class="article-link" target="_blank">Страница трека →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Skolkovo 9 -->
+                <article class="article-card">
+                    <div class="article-header">
+                        <div class="article-year">СКОЛКОВО</div>
+                        <h3>День лидерства СКОЛКОВО 2026 — спикер</h3>
+                    </div>
+                    <div class="article-authors">Шаменков Д.А.</div>
+                    <div class="article-date">Школа управления СКОЛКОВО — 02 апреля 2026</div>
+                    <p class="article-abstract">
+                        Участие в качестве спикера на Дне лидерства Школы управления СКОЛКОВО. Выступление о научно-обоснованных подходах к лидерству и управлению здоровьем.
+                    </p>
+                    <div class="article-actions">
+                        <div class="article-links">
+                            <a href="https://www.skolkovo.ru/events/den-liderstva-v-skolkovo-2026/" class="article-link" target="_blank">Страница события →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Skolkovo PDF -->
+                <article class="article-card">
+                    <div class="article-header">
+                        <div class="article-year">СКОЛКОВО</div>
+                        <h3>Школа Открытого Диалога — управление здоровьем</h3>
+                    </div>
+                    <div class="article-authors">Шаменков Д.А.</div>
+                    <div class="article-date">Школа управления СКОЛКОВО — PDF-материал</div>
+                    <p class="article-abstract">
+                        Презентационный материал о методе Открытого Диалога и управлении здоровьем, подготовленный для программ СКОЛКОВО.
+                    </p>
+                    <div class="article-actions">
+                        <div class="article-links">
+                            <a href="https://ftp.skolkovo.ru/web_team/ExEd/2020/anti-fragility/shamenkov.pdf" class="article-link" target="_blank">Скачать PDF →</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ARTICLES LIST -->
+    <section class="section">
+        <div class="section-inner">
+            <div class="articles-intro">
+                <h2>Другие публикации</h2>
+            </div>
+
+            <div class="articles-grid">
+                <!-- Article 10 -->
+                <article class="article-card">
+                    <div class="article-header">
+                        <div class="article-year">2023</div>
+                        <h3>Связь новой парадигмы в современном вокале с новой парадигмой познания на примере эмоционального интеллекта вокалиста</h3>
+                    </div>
+                    <div class="article-authors">Пилипенко М.В., Меркульев М.Ю.</div>
+                    <div class="article-date">14 июля 2023</div>
+                    <p class="article-abstract">
+                        В статье обсуждается связь новой парадигмы в современном вокале с новой парадигмой познания на примере эмоционального интеллекта вокалиста. Рассматривается эволюция вокального искусства, переход от классической школы к новым методикам, основанным на теории функциональных систем П.К. Анохина и методе Открытого диалога.
+                    </p>
+                    <div class="article-actions">
+                        <button class="article-read-btn toggle-full" onclick="toggleArticle(event)">Читать полностью →</button>
+                    </div>
+                    <div class="article-fulltext">
+                        <div class="article-fulltext-content">
+                            Полный текст доступен на платформе Школы Открытого Диалога. Статья содержит подробный анализ связи вокального мастерства с теорией функциональных систем П.К. Анохина и исследует роль эмоционального интеллекта в развитии современного вокального искусства.
+                        </div>
+                        <div class="article-links">
+                            <a href="https://lk.dialogplatforma.ru/articles/10" class="article-link" target="_blank">Читать на платформе →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 9 -->
+                <article class="article-card">
+                    <div class="article-header">
+                        <div class="article-year">2023</div>
+                        <h3>Эффективность инновационной системы управления здоровьем человека</h3>
+                    </div>
+                    <div class="article-authors">Шаменков Д.А., Шевцов С.А.</div>
+                    <div class="article-date">24 апреля 2023</div>
+                    <p class="article-abstract">
+                        Исследование эффективности инновационной системы управления здоровьем на основе теории функциональных систем. В исследовании приняли участие 55 человек (экспериментальная группа — 35, контрольная — 20). Использован опросник WHOQOL-100 (ВОЗ). Результат: улучшение качества жизни на 12.6%.
+                    </p>
+                    <div class="article-actions">
+                        <button class="article-read-btn toggle-full" onclick="toggleArticle(event)">Читать полностью →</button>
+                    </div>
+                    <div class="article-fulltext">
+                        <div class="article-fulltext-content">
+                            Данное исследование демонстрирует значимый прогресс в развитии инновационных подходов к управлению здоровьем человека. Применение теории функциональных систем П.К. Анохина позволило разработать эффективную методику, показавшую существенное улучшение показателей качества жизни участников исследования.
+                        </div>
+                        <div class="article-links">
+                            <a href="https://www.elibrary.ru/item.asp?id=43166974" class="article-link" target="_blank">eLibrary →</a>
+                            <a href="https://lk.dialogplatforma.ru/articles/9" class="article-link" target="_blank">На платформе →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 8 -->
+                <article class="article-card">
+                    <div class="article-header">
+                        <div class="article-year">2023</div>
+                        <h3>Коучинг как методика развития потенциала человека и организации</h3>
+                    </div>
+                    <div class="article-authors">Меркульев М.Ю., Меркульева Т.А.</div>
+                    <div class="article-date">24 апреля 2023</div>
+                    <p class="article-abstract">
+                        Анализ командного коучинга через призму динамики малых групп на основе теории функциональных систем. Рассматриваются подходы к развитию потенциала через социальные технологии.
+                    </p>
+                    <div class="article-actions">
+                        <button class="article-read-btn toggle-full" onclick="toggleArticle(event)">Читать полностью →</button>
+                    </div>
+                    <div class="article-fulltext">
+                        <div class="article-fulltext-content">
+                            В данной работе коучинг рассматривается как современная и эффективная методика развития потенциала как отдельного человека, так и организации в целом. Использование динамического анализа малых групп позволяет понять сложные процессы взаимодействия и создает основу для разработки целевых интервенций.
+                        </div>
+                        <div class="article-links">
+                            <a href="https://www.elibrary.ru/item.asp?id=48411775" class="article-link" target="_blank">eLibrary →</a>
+                            <a href="https://lk.dialogplatforma.ru/articles/8" class="article-link" target="_blank">На платформе →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 7 -->
+                <article class="article-card">
+                    <div class="article-header">
+                        <div class="article-year">2023</div>
+                        <h3>Как можно потерять ресурс человека, пытаясь его развить</h3>
+                    </div>
+                    <div class="article-authors">Меркульева Т.А., Меркульев М.Ю.</div>
+                    <div class="article-date">24 апреля 2023</div>
+                    <p class="article-abstract">
+                        Рассматривается проблема потери человеческого ресурса и потенциала при попытке его развития. Анализ через призму теории функциональных систем П.К. Анохина.
+                    </p>
+                    <div class="article-actions">
+                        <button class="article-read-btn toggle-full" onclick="toggleArticle(event)">Читать полностью →</button>
+                    </div>
+                    <div class="article-fulltext">
+                        <div class="article-fulltext-content">
+                            Статья критически анализирует парадоксы, возникающие при неправильно спроектированных программах развития человеческих ресурсов. Авторы показывают, как недостаток учета системной природы человека может привести к неожиданным негативным результатам.
+                        </div>
+                        <div class="article-links">
+                            <a href="https://www.elibrary.ru/item.asp?id=49928766" class="article-link" target="_blank">eLibrary →</a>
+                            <a href="https://lk.dialogplatforma.ru/articles/7" class="article-link" target="_blank">На платформе →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 6 -->
+                <article class="article-card">
+                    <div class="article-header">
+                        <div class="article-year">2023</div>
+                        <h3>Игра как инструмент развития социальных технологий</h3>
+                    </div>
+                    <div class="article-authors">Меркульев М.Ю.</div>
+                    <div class="article-date">24 апреля 2023</div>
+                    <p class="article-abstract">
+                        Игровой подход к развитию социальных технологий в контексте нейрофизиологии школы П.К. Анохина.
+                    </p>
+                    <div class="article-actions">
+                        <button class="article-read-btn toggle-full" onclick="toggleArticle(event)">Читать полностью →</button>
+                    </div>
+                    <div class="article-fulltext">
+                        <div class="article-fulltext-content">
+                            Игра является не только инструментом развлечения, но и мощным методом создания и апробирования новых социальных технологий. Статья исследует, как игровые механики могут быть использованы для безопасного экспериментирования с организационными и общественными процессами.
+                        </div>
+                        <div class="article-links">
+                            <a href="https://www.elibrary.ru/item.asp?id=43997872" class="article-link" target="_blank">eLibrary →</a>
+                            <a href="https://lk.dialogplatforma.ru/articles/6" class="article-link" target="_blank">На платформе →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 5 -->
+                <article class="article-card">
+                    <div class="article-header">
+                        <div class="article-year">2023</div>
+                        <h3>Антропологическое ядро: ответ на сверхвызов искусственного интеллекта</h3>
+                    </div>
+                    <div class="article-authors">Меркульев М.Ю., Меркульева Т.А.</div>
+                    <div class="article-date">24 апреля 2023</div>
+                    <p class="article-abstract">
+                        Концепция антропологического ядра как ответ на вызовы ИИ. Теория функциональных систем и развитие потенциала человека.
+                    </p>
+                    <div class="article-actions">
+                        <button class="article-read-btn toggle-full" onclick="toggleArticle(event)">Читать полностью →</button>
+                    </div>
+                    <div class="article-fulltext">
+                        <div class="article-fulltext-content">
+                            В эпоху стремительного развития искусственного интеллекта особенно острым становится вопрос сохранения и развития уникально человеческих качеств и способностей. Статья предлагает концепцию антропологического ядра как ключевой элемента стратегии адаптации человечества к вызовам ИИ.
+                        </div>
+                        <div class="article-links">
+                            <a href="https://www.elibrary.ru/item.asp?id=50491016" class="article-link" target="_blank">eLibrary →</a>
+                            <a href="https://lk.dialogplatforma.ru/articles/5" class="article-link" target="_blank">На платформе →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 4 -->
+                <article class="article-card">
+                    <div class="article-header">
+                        <div class="article-year">2023</div>
+                        <h3>Доверие как социально-экономический фактор и нейрофизиологические подходы к восстановлению доверия</h3>
+                    </div>
+                    <div class="article-authors">Меркульев М.Ю., Меркульева Т.А.</div>
+                    <div class="article-date">24 апреля 2023</div>
+                    <p class="article-abstract">
+                        Доверие как социально-экономический фактор. Нейрофизиологические подходы к восстановлению доверия на основе теории функциональных систем.
+                    </p>
+                    <div class="article-actions">
+                        <button class="article-read-btn toggle-full" onclick="toggleArticle(event)">Читать полностью →</button>
+                    </div>
+                    <div class="article-fulltext">
+                        <div class="article-fulltext-content">
+                            Доверие является фундаментальным элементом любого здорового общества и экономики. Исследование показывает, как нейрофизиологическое понимание механизмов формирования доверия может помочь в разработке более эффективных подходов к восстановлению социального капитала.
+                        </div>
+                        <div class="article-links">
+                            <a href="https://www.elibrary.ru/item.asp?id=49928765" class="article-link" target="_blank">eLibrary →</a>
+                            <a href="https://lk.dialogplatforma.ru/articles/4" class="article-link" target="_blank">На платформе →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="article-card">
+                    <div class="article-header">
+                        <div class="article-year">2023</div>
+                        <h3>Разработка технологии развития человеческого потенциала на основе теории функциональных систем академика П.К.Анохина</h3>
+                    </div>
+                    <div class="article-authors">Меркульев М.Ю., Шаменков Д.А.</div>
+                    <div class="article-date">24 апреля 2023</div>
+                    <p class="article-abstract">
+                        Задача развития человеческого потенциала в условиях быстро меняющегося мира приобрела высокую актуальность. В статье приведены основания парадигмы наук о человеке на основе теории функциональных систем. Представлены результаты многолетнего применения этой парадигмы для разработки технологии развития потенциала человека и команд.
+                    </p>
+                    <div class="article-actions">
+                        <button class="article-read-btn toggle-full" onclick="toggleArticle(event)">Читать полностью →</button>
+                    </div>
+                    <div class="article-fulltext">
+                        <div class="article-fulltext-content">
+                            Эта ключевая статья представляет собой обобщение многолетних исследований и практических разработок, направленных на создание целостной парадигмы развития человеческого потенциала. Авторы показывают, как теория функциональных систем П.К. Анохина может быть применена к практическим задачам индивидуального и организационного развития.
+                        </div>
+                        <div class="article-links">
+                            <a href="https://www.elibrary.ru/item.asp?id=48411776" class="article-link" target="_blank">eLibrary →</a>
+                            <a href="https://lk.dialogplatforma.ru/articles/3" class="article-link" target="_blank">На платформе →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 1 -->
+                <article class="article-card">
+                    <div class="article-header">
+                        <div class="article-year">2010</div>
+                        <h3>Система управления здоровьем</h3>
+                    </div>
+                    <div class="article-authors">Шаменков Д.А.</div>
+                    <div class="article-date">17 августа 2010</div>
+                    <p class="article-abstract">
+                        О том, можно ли командным решением заставить персонал вести здоровый образ жизни, от чего вообще зависит здоровье сотрудников и как им управлять, чтобы компания всегда сохраняла конкурентоспособность.
+                    </p>
+                    <div class="article-actions">
+                        <button class="article-read-btn toggle-full" onclick="toggleArticle(event)">Читать полностью →</button>
+                    </div>
+                    <div class="article-fulltext">
+                        <div class="article-fulltext-content">
+                            Статья, написанная в 2010 году, остается актуальной и сегодня. Она поднимает важные вопросы о роли здоровья сотрудников в успехе организации и предлагает системный подход к управлению здоровьем как стратегическому активу компании.
+                        </div>
+                        <div class="article-links">
+                            <a href="https://lk.dialogplatforma.ru/articles/1" class="article-link" target="_blank">Читать на платформе →</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>НОЦ «ИСТвМ»</h3>
+                    <p>Научно-образовательный центр «Информационные и социальные технологии в медицине» при Сеченовском Университете занимается исследованиями и разработками в области современных технологий здравоохранения.</p>
+                    <div class="footer-social">
+                        <a href="#" title="LinkedIn">in</a>
+                        <a href="#" title="Twitter">𝕏</a>
+                        <a href="#" title="GitHub">⚙️</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Навигация</h4>
+                    <a href="index.html">Главная</a>
+                    <a href="index.html#mission">О нас</a>
+                    <a href="index.html#directions">Направления</a>
+                    <a href="#articles">Публикации</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Ресурсы</h4>
+                    <a href="https://lk.dialogplatforma.ru">Школа Открытого Диалога</a>
+                    <a href="https://www.elibrary.ru">eLibrary</a>
+                    <a href="https://opendialogue.space">Open Dialogue</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Контакты</h4>
+                    <a href="mailto:info@istvm.ru">info@istvm.ru</a>
+                    <a href="tel:+74959169100">+7 (495) 916-91-00</a>
+                    <a href="#">Москва, Россия</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 НОЦ «ИСТвМ». Все права защищены.</p>
+                <div>
+                    <a href="#">Конфиденциальность</a>
+                    <span style="margin: 0 12px;">•</span>
+                    <a href="#">Использование сайта</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Toggle featured article full text
+        function toggleFeatured(button) {
+            const fulltext = button.nextElementSibling;
+            const isExpanded = fulltext.classList.contains('expanded');
+
+            fulltext.classList.toggle('expanded');
+            button.textContent = isExpanded ? 'Читать полностью →' : 'Свернуть ↑';
+        }
+
+        // Toggle article full text
+        function toggleArticle(event) {
+            const button = event.target;
+            const card = button.closest('.article-card');
+            const fulltext = card.querySelector('.article-fulltext');
+            const isExpanded = fulltext.classList.contains('expanded');
+
+            fulltext.classList.toggle('expanded');
+            button.textContent = isExpanded ? 'Читать полностью →' : 'Свернуть ↑';
+        }
+    </script>
+</body>
+</html>

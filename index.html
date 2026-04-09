@@ -992,15 +992,20 @@
         }
 
         .media-source-logo {
-            width: 36px;
-            height: 36px;
-            border-radius: 8px;
+            height: 28px;
+            width: auto;
+            max-width: 120px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            font-size: 14px;
-            color: white;
+            justify-content: flex-start;
+        }
+
+        .media-source-logo img {
+            height: 100%;
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
+            display: block;
         }
 
         .media-source-name {
@@ -1390,7 +1395,7 @@
             <div class="media-grid">
                 <div class="media-card fade-in">
                     <div class="media-source">
-                        <div class="media-source-logo" style="background: #0a0a0a;">F</div>
+                        <div class="media-source-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/d/db/Forbes_logo.svg" alt="Forbes"></div>
                         <span class="media-source-name">Forbes Russia</span>
                     </div>
                     <h3>Яд лжи и одиночества: как мы сами обрекаем себя на неудачи в бизнесе и жизни</h3>
@@ -1399,7 +1404,7 @@
                 </div>
                 <div class="media-card fade-in">
                     <div class="media-source">
-                        <div class="media-source-logo" style="background: #0a0a0a;">F</div>
+                        <div class="media-source-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/d/db/Forbes_logo.svg" alt="Forbes"></div>
                         <span class="media-source-name">Forbes Russia</span>
                     </div>
                     <h3>Эпидемия одиночества: что укорачивает жизнь сильнее болезней, фастфуда и алкоголя</h3>
@@ -1408,13 +1413,16 @@
                 </div>
                 <div class="media-card fade-in">
                     <div class="media-source">
-                        <div class="media-source-logo" style="background: linear-gradient(135deg, #00b956, #00d964);">Sk</div>
-                        <span class="media-source-name">Skolkovo</span>
+                        <div class="media-source-logo" style="max-width: 150px;"><img src="https://upload.wikimedia.org/wikipedia/commons/7/79/SKOLKOVO_Logo_en.jpg" alt="Московская школа управления СКОЛКОВО"></div>
+                        <span class="media-source-name">МШУ СКОЛКОВО</span>
                     </div>
                     <h3>Как противостоять стрессу? Советы доктора Шаменкова</h3>
                     <p>Ментор и член Экспертного совета Фонда «Сколково». Научно обоснованные рекомендации по управлению стрессом и адаптивному мышлению.</p>
                     <a href="https://www.skolkovo.ru/expert-opinions/kak-protivostoyat-stressu-sovety-doktora-shamenkova/" target="_blank" class="media-card-link">Читать на Skolkovo →</a>
                 </div>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="articles.html#media" class="btn btn-primary">Все публикации в СМИ →</a>
             </div>
         </div>
     </section>
